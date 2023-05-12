@@ -1,0 +1,33 @@
+.App {
+  text-align: center;
+}
+
+/* Nav */
+
+#nav-body {
+  background-color: white;
+  width: 100%;
+  height: 4rem;
+  position: sticky;
+  top: 0;
+  border-bottom: solid 1px rgb(212, 212, 212);
+  display: grid;
+  place-items: left;
+}
+#title{
+  display: flex;
+  justify-content:flex-start;
+  align-items:baseline;
+}
+#logo {
+  width: 50px;
+  height: 40px;
+  margin-right: 1rem;
+}
+#name {
+  font-size: xx-large;
+  font-weight: bold;
+}
+img:hover{
+  cursor: pointer
+}
