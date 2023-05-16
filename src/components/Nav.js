@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./Dropdown.module.css";
+import styles from "./Nav.module.css";
 import { Link } from "react-router-dom";
 
 function Nav() {
@@ -22,9 +22,9 @@ function Nav() {
             alt="드롭다운 토글 버튼"
           />
           <div className={`${styles.dropdownContent} ${isOpen ? "open" : ""}`}>
-            <Link to="/">전수빈님, 안녕하세요!</Link>
-            <Link to="/1">상품리스트 페이지</Link>
-            <Link to="/2">북마크 페이지</Link>
+            <Link className = "menu" to="/">전수빈님, 안녕하세요!</Link>
+            <Link className = "menu" to="/1">상품리스트 페이지</Link>
+            <Link className = "menu" to="/2">북마크 페이지</Link>
           </div>
         </div>
       </span>
