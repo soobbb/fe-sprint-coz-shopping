@@ -11,7 +11,7 @@
 }
 
 .dropdownContent {
-  /* position:relative; */
+  position:relative;
   top: 100%; /* 드롭다운 컨텐츠가 아이콘 아래에 위치하도록 설정합니다 */
   left: 0;
   background-color: #f9f9f9;
@@ -25,9 +25,15 @@
   justify-content: center;
   display: flex;
   flex-direction: column;
+  text-decoration: none;
+  color: #000000;
 }
 
 .container:hover .dropdownContent {
   opacity: 1; /* 호버 상태에서는 드롭다운 컨텐츠를 보이도록 투명도를 조절합니다 */
   visibility: visible; /* 호버 상태에서는 드롭다운 컨텐츠를 보이도록 설정합니다 */
+}
+.menu {
+  text-decoration: none;
+  color: #000000;
 }

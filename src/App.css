@@ -31,8 +31,12 @@
 img:hover {
   cursor: pointer;
 }
-#Dropdown{
+#Dropdown {
   padding-left: 100px;
+}
+.menu {
+  text-decoration: none;
+  color: #000000;
 }
 
 /* Footer */
@@ -50,4 +54,13 @@ img:hover {
   justify-content: center;
   align-items: center;
   border-top: solid 1px rgb(212, 212, 212);
+}
+
+/* body */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
 }
