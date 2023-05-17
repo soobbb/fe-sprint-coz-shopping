@@ -13,8 +13,8 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<ProductBookmarkPage />} />
-        <Route path="/1" element={<ProductPage />} />
-        <Route path="/2" element={<BookmarkPage />} />
+        <Route path="/product/list" element={<ProductPage />} />
+        <Route path="/bookmark" element={<BookmarkPage />} />
       </Routes>
       <Footer />
     </Router>

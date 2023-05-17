@@ -3,15 +3,21 @@
 }
 
 .logo {
-  margin-right: 10px;
+  margin-right: 20px;
+  margin-top: 10px;
+  margin-left: 50px;
 }
 
 .logo_name {
+  font-size: xx-large;
   margin-right: auto;
+  font-weight: 900;
 }
-
+img:hover {
+  cursor: pointer;
+}
 .dropdownContent {
-  position:relative;
+  position: relative;
   top: 100%; /* 드롭다운 컨텐츠가 아이콘 아래에 위치하도록 설정합니다 */
   left: 0;
   background-color: #f9f9f9;
@@ -36,4 +42,19 @@
 .menu {
   text-decoration: none;
   color: #000000;
+}
+#nav_body {
+  background-color: white;
+  width: 100%;
+  height: 4rem;
+  position: sticky;
+  top: 0;
+  border-bottom: solid 1px rgb(212, 212, 212);
+  display: grid;
+  place-items: left;
+}
+#title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
 }
