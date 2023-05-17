@@ -1,9 +1,11 @@
-import React from "react";
+import styles from "./Footer.module.css";
 
 function Footer() {
   return (
-    <footer id="footer-body">
-      <div className="footer-text">개인정보 처리방침 | 이용 약관 All rights reserved@Codestates</div>
+    <footer className={`${styles.footer_body}`}>
+      <div className={`${styles.footer_text}`}>
+        개인정보 처리방침 | 이용 약관 All rights reserved@Codestates
+      </div>
     </footer>
   );
 }

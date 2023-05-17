@@ -1,6 +1,6 @@
 .itemList {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   width: 100%;
 }
 
@@ -17,6 +17,8 @@
 }
 
 .imgBox {
+  display: flex;
+  align-items: center;
   position: relative;
   width: 325px;
   height: 180px;
@@ -52,7 +54,7 @@
   margin-left: auto;
 }
 
-.Categorytitle {
+.CategoryTitle {
   font-weight: 800;
   text-align: start;
   margin-left: 10px;
