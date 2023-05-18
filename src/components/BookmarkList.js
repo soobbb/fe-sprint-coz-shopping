@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./ProductList.module.css";
 
-function ItemList({ product }) {
+function ItemList({ product, onBookmarkClick }) {
   return (
     <ul className={classes.itemList}>
       {product.map((item) => {
@@ -17,8 +17,9 @@ function ItemList({ product }) {
                   />
                   <img
                     className={classes.bookmark}
-                    src="bookmark_off.png"
+                    src="bookmark_on.png"
                     alt="bookmark"
+                    onClick={() => onBookmarkClick(item)}
                   />
                 </span>
                 <span className={classes.productLine}>
@@ -46,8 +47,9 @@ function ItemList({ product }) {
                   />
                   <img
                     className={classes.bookmark}
-                    src="bookmark_off.png"
+                    src="bookmark_on.png"
                     alt="bookmark"
+                    onClick={() => onBookmarkClick(item)}
                   />
                 </span>
                 <span className={classes.CategoryTitle}>#{item.title}</span>
@@ -64,8 +66,9 @@ function ItemList({ product }) {
                   />
                   <img
                     className={classes.bookmark}
-                    src="bookmark_off.png"
+                    src="bookmark_on.png"
                     alt="bookmark"
+                    onClick={() => onBookmarkClick(item)}
                   />
                 </span>
                 <span className={classes.CategoryTitle}>#{item.title}</span>
@@ -85,8 +88,9 @@ function ItemList({ product }) {
                   />
                   <img
                     className={classes.bookmark}
-                    src="bookmark_off.png"
+                    src="bookmark_on.png"
                     alt="bookmark"
+                    onClick={() => onBookmarkClick(item)}
                   />
                 </span>
                 <span className={classes.productLine}>
@@ -99,8 +103,8 @@ function ItemList({ product }) {
           default:
             return null;
         }
-      })} 
-    </ul> 
+      })}
+    </ul>
   );
 }
 export default ItemList;

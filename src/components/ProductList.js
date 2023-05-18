@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./ProductList.module.css";
 
-function ItemList({ product, onBookmarkClick }) {
+function ItemList({ product, onBookmarkClick, handleImageClick}) {
   return (
     <ul className={classes.itemList}>
       {product.map((item) => {
@@ -14,6 +14,7 @@ function ItemList({ product, onBookmarkClick }) {
                     className={classes.img}
                     src={item.image_url}
                     alt={item.title}
+
                   />
                   <img
                     className={classes.bookmark}
