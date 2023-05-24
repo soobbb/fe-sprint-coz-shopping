@@ -3,10 +3,10 @@ import ProductList from "../components/ProductList";
 import axios from "axios";
 import BookmarkList from "../components/BookmarkList";
 // import LocalStorage from "../LocalStorage";
-import { ToastContainer } from "react-toastify";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Toast from "../components/Toast"
+import Toast from "../components/Toast";
+import Modal from "../components/Modal";
 
 function ProductBookmarkPage() {
   const [product, setProduct] = useState([]);
@@ -14,6 +14,8 @@ function ProductBookmarkPage() {
   // const [index, setIndex] = useState(0);
   // const [bookmarkItems, setBookmarkItems] =  LocalStorage("bookmarkLists", []);
   const [bookmarkList, setBookmarkList] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedImage, setSelectedImage] = useState();
 
   useEffect(() => {
     axios
@@ -29,14 +31,12 @@ function ProductBookmarkPage() {
         console.log(error);
       });
   }, []);
-  
-  const showToast = (image                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ) => {
-    toast.info(<Toast image={image}/>, {
+
+  const showToast = (message) => {
+    toast(message, {
       position: toast.POSITION.BOTTOM_RIGHT,
-      autoClose: 1000, 
+      autoClose: 1000,
       hideProgressBar: true,
-      className: 'custom-toast',
-      bodyClassName: 'custom-toast-body',
     });
   };
 
@@ -49,11 +49,16 @@ function ProductBookmarkPage() {
       const updatedBookmarkList = [...bookmarkList];
       updatedBookmarkList.splice(itemIndex, 1);
       setBookmarkList(updatedBookmarkList);
-      showToast("Toast_off.png");
+      showToast("상품이 북마크에서 제거되었습니다.");
     } else {
       setBookmarkList((prevBookmarkList) => prevBookmarkList.concat(item));
-      showToast("Toast_on.png");
+      showToast("상품이 북마크에서 추가되었습니다.");
     }
+  };
+
+  const handleImageClick = (image) => {
+    setSelectedImage(image);
+    setShowModal(true);
   };
 
   return (
@@ -63,14 +68,19 @@ function ProductBookmarkPage() {
         product={product}
         setProduct={setProduct}
         onBookmarkClick={handleBookmarkClick}
+        handleImageClick={handleImageClick}
       />
       <h2 id="item-list-title">북마크 리스트</h2>
       <BookmarkList
         product={bookmarkList}
         setBookmarkList={setBookmarkList}
         onBookmarkClick={handleBookmarkClick}
+        handleImageClick={handleImageClick}
       />
-      <ToastContainer />
+      <Toast />
+      {showModal && (
+        <Modal image={selectedImage} onClose={() => setShowModal(false)} />
+      )}
     </>
   );
 }

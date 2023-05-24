@@ -1,7 +1,7 @@
 .container {
   position: relative;
+  margin-left: auto;
 }
-
 .logo {
   margin-right: 20px;
   margin-top: 10px;
@@ -57,4 +57,12 @@ img:hover {
   display: flex;
   justify-content: flex-start;
   align-items: baseline;
+}
+
+a:link {
+  text-decoration: none;
+}
+a:visited {
+  text-decoration: none;
+  color: black
 }
