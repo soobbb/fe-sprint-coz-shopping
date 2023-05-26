@@ -1,9 +1,11 @@
-import { ToastContainer} from "react-toastify";
+import { ToastContainer } from "react-toastify";
 
-const Toast = ({ image }) => (
-  <>
-    <img className="custom-toast-image" src={image} alt="Bookmark Icon" />
-    <ToastContainer className="custom-toast-container" />
-  </>
-);
+
+const Toast = () => {
+  return (
+    <>
+      <ToastContainer />
+    </>
+  );
+};
 export default Toast;

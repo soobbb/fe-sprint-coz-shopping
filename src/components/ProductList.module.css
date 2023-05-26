@@ -1,4 +1,4 @@
-.itemList {
+/* .itemList {
   display: flex;
   justify-content: flex-start;
   width: 100%;
@@ -35,7 +35,7 @@
   cursor: pointer;
 }
 
-/* text */
+
 
 .productLine {
   display: flex;
@@ -72,4 +72,4 @@
 .follower {
   font-weight: 500;
   margin-left: auto;
-}
+} */
