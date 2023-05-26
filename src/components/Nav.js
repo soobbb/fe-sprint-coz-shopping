@@ -1,8 +1,64 @@
 import React, { useState } from "react";
-import styles from "./Nav.module.css";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-function Nav() {
+const NavContainer = styled.nav`
+  background-color: white;
+  width: 100%;
+  height: 4rem;
+  position: sticky;
+  top: 0;
+  border-bottom: solid 1px rgb(212, 212, 212);
+  display: grid;
+  place-items: left;
+`;
+
+const NavTitle = styled.span`
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+`;
+
+const Logo = styled.img`
+  margin-right: 20px;
+  margin-top: 10px;
+  margin-left: 50px;
+`;
+
+const LogoName = styled.span`
+  font-size: xx-large;
+  margin-right: auto;
+  font-weight: 900;
+  text-decoration: none;
+  color: #000000;
+`;
+
+const Container = styled.div`
+  position: relative;
+  margin-left: auto;
+  img:hover {
+    cursor: pointer;
+  }
+`;
+
+const DropdownContent = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  top: 100%;
+  background-color: #f9f9f9;
+  padding-right: 1px;
+  border: 1px solid #ccc;
+  width: 150px;
+  opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
+  visibility: ${({ isOpen }) => (isOpen ? "visible" : "hidden")};
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+`;
+const MenuLink = styled(Link)``;
+
+const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -10,34 +66,46 @@ function Nav() {
   };
 
   return (
-    <nav id={`${styles.nav_body}`}>
-      <span id={`${styles.title}`}>
-        <Link to="/">
-          <img className={`${styles.logo}`} src="로고.png" alt="로고" />
-          <span className={`${styles.logo_name}`}>COZ Shopping</span>
+    <NavContainer>
+      <NavTitle>
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <Logo src="로고.png" alt="로고" />
+          <LogoName>COZ Shopping</LogoName>
         </Link>
-        <div className={styles.container}>
+        <Container>
           <img
             src="아이콘.png"
             id="Dropdown"
             onClick={toggleDropdown}
             alt="드롭다운 토글 버튼"
           />
-          <div className={`${styles.dropdownContent} ${isOpen ? "open" : ""}`}>
-            <Link className="menu" to="/">
+          <DropdownContent isOpen={isOpen}>
+            <MenuLink
+              className="menu"
+              to="/"
+              style={{ color: "black", textDecoration: "none" }}
+            >
               전수빈님, 안녕하세요!
-            </Link>
-            <Link className="menu" to="/1">
+            </MenuLink>
+            <MenuLink
+              className="menu"
+              to="/product/list"
+              style={{ color: "black", textDecoration: "none" }}
+            >
               상품리스트 페이지
-            </Link>
-            <Link className="menu" to="/2">
+            </MenuLink>
+            <MenuLink
+              className="menu"
+              to="/bookmark"
+              style={{ color: "black", textDecoration: "none" }}
+            >
               북마크 페이지
-            </Link>
-          </div>
-        </div>
-      </span>
-    </nav>
+            </MenuLink>
+          </DropdownContent>
+        </Container>
+      </NavTitle>
+    </NavContainer>
   );
-}
+};
 
 export default Nav;
