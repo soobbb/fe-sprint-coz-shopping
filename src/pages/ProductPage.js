@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from "react";
-import ProductList from "../components/ProductList";
-import axios from "axios";
-import BookmarkList from "../components/BookmarkList";
+// import ProductList from "../components/ProductList";
+// import BookmarkList from "../components/BookmarkList";
 // import LocalStorage from "../LocalStorage";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Toast from "../components/Toast";
 import Modal from "../components/Modal";
-import ProductPagelist from "../components/ProductPagelist";
+import ProductList from "../components/ProductList";
+import { styled } from "styled-components";
+import Category from "../components/Category";
+import Productpagelist from "../components/ProductPagelist"
 
 function ProductPage() {
+  const titles = ["Product", "Category", "Exhibition", "Brand"];
+
+  const [items, setItems] = useState([]);
   const [product, setProduct] = useState([]);
   // const [product, setProduct] = LocalStorage("bookmarkLists", []);
   // const [index, setIndex] = useState(0);
@@ -17,21 +22,31 @@ function ProductPage() {
   const [bookmarkList, setBookmarkList] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedImage, setSelectedImage] = useState();
+  const [index, setIndex] = useState(0);
+
+  const getProducts = () => {
+    fetch(`http://cozshopping.codestates-seb.link/api/v1/products?`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setItems(data.map((item) => ({ ...item, bookmark: false })));
+        setProduct(data.map((item) => ({ ...item, bookmark: false })));
+      });
+  };
 
   useEffect(() => {
-    axios
-      .get("http://cozshopping.codestates-seb.link/api/v1/products?", {
-        params: {
-          
-        },
-      })
-      .then((response) => {
-        setProduct(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    getProducts();
   }, []);
+
+  useEffect(() => {
+    // console.log('index 가 바뀔 때 마다');
+    setProduct(
+      items.filter((item) => {
+        console.log(titles[index - 1]);
+        return index > 0 ? item.type === titles[index - 1] : item;
+      })
+    );
+  }, [index]);
 
   const showToast = (message) => {
     toast(message, {
@@ -61,17 +76,21 @@ function ProductPage() {
     setSelectedImage(image);
     setShowModal(true);
   };
-
+  const ItemListContainer = styled.ul`
+  display: flex;
+  /* justify-content: flex-start; */
+  width: 100%;
+  flex-wrap: wrap;
+`;
   return (
     <>
-      <div>
-        
-      </div>
-      <ProductPagelist
+      <Category setIndex={setIndex} />
+      <Productpagelist
         product={product}
         setProduct={setProduct}
         onBookmarkClick={handleBookmarkClick}
         handleImageClick={handleImageClick}
+        index={index}
       />
       <Toast />
       {showModal && (

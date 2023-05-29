@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import classes from "./ProductList.module.css";
+import bookmarkOn from "../assets/bookmark_on.png";
 
 const ItemListContainer = styled.ul`
   display: flex;
@@ -97,7 +98,7 @@ function ItemList({ product, onBookmarkClick, handleImageClick }) {
                   </div>
                   <BookmarkIcon
                     className={classes.bookmark}
-                    src="bookmark_on.png"
+                    src={bookmarkOn}
                     alt="bookmark"
                     onClick={() => onBookmarkClick(item)}
                   />
@@ -127,7 +128,7 @@ function ItemList({ product, onBookmarkClick, handleImageClick }) {
                   </div>
                   <BookmarkIcon
                     className={classes.bookmark}
-                    src="bookmark_on.png"
+                    src={bookmarkOn}
                     alt="bookmark"
                     onClick={() => onBookmarkClick(item)}
                   />
@@ -148,7 +149,7 @@ function ItemList({ product, onBookmarkClick, handleImageClick }) {
                   </div>
                   <BookmarkIcon
                     className={classes.bookmark}
-                    src="bookmark_on.png"
+                    src={bookmarkOn}
                     alt="bookmark"
                     onClick={() => onBookmarkClick(item)}
                   />
@@ -170,7 +171,7 @@ function ItemList({ product, onBookmarkClick, handleImageClick }) {
                   </div>
                   <BookmarkIcon
                     className={classes.bookmark}
-                    src="bookmark_on.png"
+                    src={bookmarkOn}
                     alt="bookmark"
                     onClick={() => onBookmarkClick(item)}
                   />
