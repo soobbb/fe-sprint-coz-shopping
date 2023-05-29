@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import classes from "./ProductList.module.css";
-import bookmarkOn from "../assets/bookmark_on.png";
+import classes from "./ProductPagelist.module.css";
+import bookmarkOff from "../assets/bookmark_off.png";
 
 const ItemListContainer = styled.ul`
   display: flex;
-  justify-content: flex-start;
+  /* justify-content: flex-start; */
   width: 100%;
+  flex-wrap: wrap;
 `;
 
 const Item = styled.li`
@@ -80,7 +81,7 @@ const Follower = styled.span`
   margin-left: auto;
 `;
 
-function ItemList({ product, onBookmarkClick, handleImageClick }) {
+function ProductPagelist({ product, onBookmarkClick, handleImageClick }) {
   return (
     <ItemListContainer>
       {product.map((item) => {
@@ -98,7 +99,7 @@ function ItemList({ product, onBookmarkClick, handleImageClick }) {
                   </div>
                   <BookmarkIcon
                     className={classes.bookmark}
-                    src={bookmarkOn}
+                    src={bookmarkOff}
                     alt="bookmark"
                     onClick={() => onBookmarkClick(item)}
                   />
@@ -128,7 +129,7 @@ function ItemList({ product, onBookmarkClick, handleImageClick }) {
                   </div>
                   <BookmarkIcon
                     className={classes.bookmark}
-                    src={bookmarkOn}
+                    src={bookmarkOff}
                     alt="bookmark"
                     onClick={() => onBookmarkClick(item)}
                   />
@@ -149,7 +150,7 @@ function ItemList({ product, onBookmarkClick, handleImageClick }) {
                   </div>
                   <BookmarkIcon
                     className={classes.bookmark}
-                    src={bookmarkOn}
+                    src={bookmarkOff}
                     alt="bookmark"
                     onClick={() => onBookmarkClick(item)}
                   />
@@ -171,7 +172,7 @@ function ItemList({ product, onBookmarkClick, handleImageClick }) {
                   </div>
                   <BookmarkIcon
                     className={classes.bookmark}
-                    src={bookmarkOn}
+                    src={bookmarkOff}
                     alt="bookmark"
                     onClick={() => onBookmarkClick(item)}
                   />
@@ -191,4 +192,4 @@ function ItemList({ product, onBookmarkClick, handleImageClick }) {
   );
 }
 
-export default ItemList;
+export default ProductPagelist;

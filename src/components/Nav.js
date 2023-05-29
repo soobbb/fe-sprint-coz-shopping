@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import 로고 from "../assets/로고.png";
+import 아이콘 from "../assets/아이콘.png";
 
 const NavContainer = styled.nav`
   background-color: white;
@@ -69,12 +71,12 @@ const Nav = () => {
     <NavContainer>
       <NavTitle>
         <Link to="/" style={{ textDecoration: "none" }}>
-          <Logo src="로고.png" alt="로고" />
+          <Logo src={로고} alt="로고" />
           <LogoName>COZ Shopping</LogoName>
         </Link>
         <Container>
           <img
-            src="아이콘.png"
+            src={아이콘}
             id="Dropdown"
             onClick={toggleDropdown}
             alt="드롭다운 토글 버튼"
