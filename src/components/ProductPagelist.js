@@ -1,17 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import classes from "./ProductList.module.css";
+import classes from "./ProductPagelist.module.css";
+import bookmarkOff from "../assets/bookmark_off.png";
 
 const ItemListContainer = styled.ul`
   display: flex;
-  
-  justify-content: flex-start;
+  /* justify-content: flex-start; */
   width: 100%;
-`;
-const ItemWrapper = styled.div`
-  display: flex;
-  flex-basis: 25%;
-  padding: 10px;
+  flex-wrap: wrap;
 `;
 
 const Item = styled.li`
@@ -86,26 +82,9 @@ const Follower = styled.span`
 `;
 
 function ProductPagelist({ product, onBookmarkClick, handleImageClick }) {
-  const chunkSize = 4; // Number of items in each row
-
-  // Chunk the product array into rows
-  const rows = product.reduce((resultArray, item, index) => {
-    const chunkIndex = Math.floor(index / chunkSize);
-
-    if (!resultArray[chunkIndex]) {
-      resultArray[chunkIndex] = []; // start a new row
-    }
-
-    resultArray[chunkIndex].push(item);
-
-    return resultArray;
-  }, []);
   return (
     <ItemListContainer>
-      {rows.map((row, rowIndex) => (
-      <ItemWrapper key={rowIndex}>
-        {row.map((item) => {
-      
+      {product.map((item) => {
         switch (item.type) {
           case "Product":
             return (
@@ -120,7 +99,7 @@ function ProductPagelist({ product, onBookmarkClick, handleImageClick }) {
                   </div>
                   <BookmarkIcon
                     className={classes.bookmark}
-                    src="bookmark_off.png"
+                    src={bookmarkOff}
                     alt="bookmark"
                     onClick={() => onBookmarkClick(item)}
                   />
@@ -150,7 +129,7 @@ function ProductPagelist({ product, onBookmarkClick, handleImageClick }) {
                   </div>
                   <BookmarkIcon
                     className={classes.bookmark}
-                    src="bookmark_off.png"
+                    src={bookmarkOff}
                     alt="bookmark"
                     onClick={() => onBookmarkClick(item)}
                   />
@@ -171,7 +150,7 @@ function ProductPagelist({ product, onBookmarkClick, handleImageClick }) {
                   </div>
                   <BookmarkIcon
                     className={classes.bookmark}
-                    src="bookmark_off.png"
+                    src={bookmarkOff}
                     alt="bookmark"
                     onClick={() => onBookmarkClick(item)}
                   />
@@ -193,7 +172,7 @@ function ProductPagelist({ product, onBookmarkClick, handleImageClick }) {
                   </div>
                   <BookmarkIcon
                     className={classes.bookmark}
-                    src="bookmark_off.png"
+                    src={bookmarkOff}
                     alt="bookmark"
                     onClick={() => onBookmarkClick(item)}
                   />
@@ -209,8 +188,6 @@ function ProductPagelist({ product, onBookmarkClick, handleImageClick }) {
             return null;
         }
       })}
-      </ItemWrapper>
-      ))}
     </ItemListContainer>
   );
 }
